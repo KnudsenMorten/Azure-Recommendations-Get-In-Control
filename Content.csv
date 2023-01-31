@@ -1,0 +1,164 @@
+﻿TableName;Purpose;Source
+Unhealthy_All;Show All Unhealthy recommendations;"Defender for Cloud
+Extracted via Azure Resource Graph"
+Unhealthy_High;Show all Unhealthy recommendations with High priority;Filtered view of Unhealthy_All
+Unhealthy_Medium;Show all Unhealthy recommendations with medium priority;Filtered view of Unhealthy_All
+Unhealthy_Low;Show all Unhealthy recommendations with Low priority;Filtered view of Unhealthy_All
+Unhealthy_All_SubLevel;Show all Unhealthy recommendations where the target is on subcription-level;Filtered view of Unhealthy_All
+Unhealthy_All_ResourceLevel;Show all Unhealthy recommendations where the target is on resource-level;Filtered view of Unhealthy_All
+Unhealthy_Category_Networking;Show all Unhealthy recommendations related to Networking category;Filtered view of Unhealthy_All
+Unhealthy_Category_AppServices;Show all Unhealthy recommendations related to AppServices category;Filtered view of Unhealthy_All
+Unhealthy_Category_Compute;Show all Unhealthy recommendations related to Compute category;Filtered view of Unhealthy_All
+Unhealthy_Category_Container;Show all Unhealthy recommendations related to Container category;Filtered view of Unhealthy_All
+Unhealthy_Category_Data;Show all Unhealthy recommendations related to Data category;Filtered view of Unhealthy_All
+Unhealthy_Category_IoT;Show all Unhealthy recommendations related to IoT category;Filtered view of Unhealthy_All
+Unhealthy_Category_Id_Access;Show all Unhealthy recommendations related to IdentityAndAccess category;Filtered view of Unhealthy_All
+SubAssess_All;Show all detailed information (SubAssessments);"Defender for Cloud
+Extracted via Azure Resource Graph"
+SubAssess_Identity;Show all identity detailed information (SubAssessments);Filtered view of SubAssess_All
+SubAssess_Other;Show all other, non-identity detailed information (SubAssessments);Filtered view of SubAssess_All
+RBAC_RoleAssignments;Show all Azure RBAC Role Assignments;Azure Role Assignsment
+RBAC_Direct_Sublevel;Show all Azure RBAC Role Assignments directly on Sub-level (not part of group);Filtered of RBAC_RoleAssignments
+RBAC_Direct_Mglevel;Show all Azure RBAC Role Assignments directly on Mg-level (not part of group);Filtered of RBAC_RoleAssignments
+PT_CATEGORY_SUBLEVEL;"Prioritize recommendations based on Category and RecommendationSeverity
+Sort-order:
+                   (1) Category (Storage, Network, Identity, etc.)
+                   (2) RecommendationSeverity (High, Medium, Low)
+                   (3) RecommendationName
+                   (4) SubName (suscription name)";"Table
+Unhealthy_All_SubLevel"
+PT_CATEGORY_RESOURCELEVEL;"Prioritize recommendations based on ResourceType and RecommendationSeverity
+Sort-order:
+                   (1) Category (Storage, Network, Identity, etc.)
+                   (2) RecommendationSeverity (High, Medium, Low)
+                   (3) RecommendationName
+                   (4) SubName (suscription name)
+                   (5) ResourceRgName
+                   (6) ResourceName";"Table
+Unhealthy_All_ResourceLevel"
+PT_CATEGORY_NETWORKING;"Prioritize networking recommendations based on RecommendationSeverity
+Sort-order:
+                   (1) RecommendationSeverity (High, Medium, Low)
+                   (2) RecommendationName
+                   (3) SubName (suscription name)
+                   (4) ResourceRgName
+                   (5) ResourceName";"Table
+Unhealthy_Category_Networking"
+PT_CATEGORY_APPSERVICES;"Prioritize AppServices recommendations based on RecommendationSeverity
+Sort-order:
+                   (1) RecommendationSeverity (High, Medium, Low)
+                   (2) RecommendationName
+                   (3) SubName (suscription name)
+                   (4) ResourceRgName
+                   (5) ResourceName";"Table
+Unhealthy_Category_AppServices"
+PT_CATEGORY_COMPUTE;"Prioritize Compute recommendations based on RecommendationSeverity
+Sort-order:
+                   (1) RecommendationSeverity (High, Medium, Low)
+                   (2) RecommendationName
+                   (3) SubName (suscription name)
+                   (4) ResourceRgName
+                   (5) ResourceName";"Table
+Unhealthy_Category_Compute"
+PT_CATEGORY_CONTAINER;"Prioritize Container recommendations based on RecommendationSeverity
+Sort-order:
+                   (1) RecommendationSeverity (High, Medium, Low)
+                   (2) RecommendationName
+                   (3) SubName (suscription name)
+                   (4) ResourceRgName
+                   (5) ResourceName";"Table
+Unhealthy_Category_Container"
+PT_CATEGORY_DATA;"Prioritize Data recommendations based on RecommendationSeverity
+Sort-order:
+                   (1) RecommendationSeverity (High, Medium, Low)
+                   (2) RecommendationName
+                   (3) SubName (suscription name)
+                   (4) ResourceRgName
+                   (5) ResourceName";"Table
+Unhealthy_Category_Data"
+PT_CATEGORY_ID_ACCESS;"Prioritize Identity and Access recommendations based on RecommendationSeverity
+Sort-order:
+                   (1) RecommendationSeverity (High, Medium, Low)
+                   (2) RecommendationName
+                   (3) SubName (suscription name)
+                   (4) ResourceRgName
+                   (5) ResourceName";"Table
+Unhealthy_Category_IdentityAndAccess"
+PT_RESOURCETYPE;"Prioritize recommendations based on ResourceType and RecommendationSeverity
+Sort-order:
+                   (1) ResourceType (SQL, Keyvault, Storage, Network, Identity, etc.)
+                   (2) RecommendationSeverity (High, Medium, Low)
+                   (3) RecommendationName
+                   (4) SubName (suscription name)
+                   (5) ResourceRgName
+                   (6) ResourceName";"Table
+Unhealthy_All_ResourceLevel"
+PT_CATEGORY_RESOURCELEVEL;"Prioritize recommendations based on Category and RecommendationSeverity
+Sort-order:
+                   (1) Category (Storage, Network, Identity, etc.)
+                   (2) RecommendationSeverity (High, Medium, Low)
+                   (3) RecommendationName
+                   (4) SubName (suscription name)
+                   (5) ResourceRgName
+                   (6) ResourceName";"Table
+Unhealthy_All_ResourceLevel"
+PT_SUBASSESS_IDENTITY;"Prioritize recommendations based on SubAssessmentSeverity (identity-related)
+Sort-order:
+                   (1) SubAssessSeverity (High, Medium, Low)
+                   (2) SubAssessDisplayName (recommendation)
+                   (3) SubAssessResDisplayName (resource)
+                   (4) SubAssessResUserPrincipalName (resource)
+                   (5) SubName (suscription name)";"Table
+SubAssess_Identity"
+PT_SUBASSESS_OTHER;"Prioritize recommendations based on SubAssessmentSeverity (non-identity related)
+Sort-order:
+                   (1) SubAssessSeverity (High, Medium, Low)
+                   (2) SubAssessDisplayName (recommendation)
+                   (3) SubAssessResDisplayName (resource)
+                   (4) SubAssessResUserPrincipalName (resource)
+                   (5) SubName (suscription name)";"Table
+SubAssess_Other"
+PT_RBAC_ROLEDEF;"Detail RBAC permissions, sorted by RoleDefinitionName and Scope_Delegation
+Sort-order:
+                   (1) SubscriptionName
+                   (2) RoleDefinitionName (Contributor, Owner, Cost Management Reader, etc.)
+                   (3) Scope_Delegation (Direct_SUB, Direct_RG, Inheritance_MG)
+                   (4) Scope (management group name or /)
+                   (5) RBAC_Delegation_Type (Group_inheritance, Direct)
+                   (6) RBAC_GroupName
+                   (7) ObjectType
+                   (8) DisplayName
+                   (9) UserPrincipalName";"Table
+RBAC_RoleAssignments"
+PT_RBAC_SCOPE_DELEGATION;"Detail RBAC permissions, sorted by Scope_Delegation and RoleDefinitionName
+Sort-order:
+                   (1) SubscriptionName
+                   (2) Scope_Delegation (Direct_SUB, Direct_RG, Inheritance_MG)
+                   (3) RoleDefinitionName (Contributor, Owner, Cost Management Reader, etc.)
+                   (4) Scope (management group name or /)
+                   (5) RBAC_Delegation_Type (Group_inheritance, Direct)
+                   (6) RBAC_GroupName
+                   (7) ObjectType
+                   (8) DisplayName
+                   (9) UserPrincipalName";"Table
+RBAC_RoleAssignments"
+PT_RBAC_MG;"Detect direct RBAC permissions on Mg-level (not done by group)
+Sort-order:
+                   (1) SubscriptionName
+                   (2) RoleDefinitionName (Contributor, Owner, Cost Management Reader, etc.)
+                   (3) Scope_Delegation (Direct_SUB, Direct_RG, Inheritance_MG)
+                   (4) Scope (management group name or /)
+                   (5) ObjectType
+                   (6) DisplayName
+                   (7) UserPrincipalName";"Table
+RBAC_Direct_Mglevel"
+PT_RBAC_SUB;"Detect direct RBAC permissions on Sub-level (not done by group)
+Sort-order:
+                   (1) SubscriptionName
+                   (2) RoleDefinitionName (Contributor, Owner, Cost Management Reader, etc.)
+                   (3) Scope_Delegation (Direct_SUB, Direct_RG, Inheritance_MG)
+                   (4) Scope (management group name or /)
+                   (5) ObjectType
+                   (6) DisplayName
+                   (7) UserPrincipalName";"Table
+RBAC_Direct_Sublevel"
