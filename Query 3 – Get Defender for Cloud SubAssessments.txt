@@ -1,0 +1,20 @@
+// Query #3 – Get Defender for Cloud SubAssessments
+SecurityResources
+| where type == 'microsoft.security/assessments/subassessments'
+| extend AssessmentKey = extract('.*assessments/(.+?)/.*',1,  id)
+| project AssessmentKey, subassessmentKey=name, id, parse_json(properties), resourceGroup, subscriptionId, tenantId
+| extend SubAssessDescription = properties.description,
+         SubAssessDisplayName = properties.displayName,
+         SubAssessResourceId = properties.resourceDetails.id,
+         SubAssessResourceSource = properties.resourceDetails.source,
+         SubAssessCategory = properties.category,
+         SubAssessSeverity = properties.status.severity,
+         SubAssessCode = properties.status.code,
+         SubAssessTimeGenerated = properties.timeGenerated,
+         SubAssessRemediation = properties.remediation,
+         SubAssessImpact = properties.impact,
+         SubAssessVulnId = properties.id,
+         SubAssessMoreInfo = properties.additionalData,
+         SubAssessMoreInfoAssessedResourceType = properties.additionalData.assessedResourceType,
+         SubAssessMoreInfoData = properties.additionalData.data
+| join kind=leftouter (resourcecontainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId

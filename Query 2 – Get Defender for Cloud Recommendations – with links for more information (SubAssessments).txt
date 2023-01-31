@@ -1,0 +1,34 @@
+// Query #2 – Get Defender for Cloud Recommendations – with links for more information (SubAssessments)
+SecurityResources
+| where type == 'microsoft.security/assessments'
+| mvexpand Category=properties.metadata.categories
+| extend AssessmentId=id,
+    AssessmentKey=name,
+    ResourceId=properties.resourceDetails.Id,
+    ResourceIdsplit = split(properties.resourceDetails.Id,'/'),
+    RecommendationId=name,
+    RecommendationName=properties.displayName,
+    Source=properties.resourceDetails.Source,
+    RecommendationState=properties.status.code,
+    ActionDescription=properties.metadata.description,
+    AssessmentType=properties.metadata.assessmentType,
+    RemediationDescription=properties.metadata.remediationDescription,
+    PolicyDefinitionId=properties.metadata.policyDefinitionId,
+    ImplementationEffort=properties.metadata.implementationEffort,
+    RecommendationSeverity=properties.metadata.severity,
+    Threats=properties.metadata.threats,
+    UserImpact=properties.metadata.userImpact,
+    AzPortalLink=properties.links.azurePortal,
+    MoreInfo=properties
+| extend ResourceSubId = tostring(ResourceIdsplit[(2)]),
+    ResourceRgName = tostring(ResourceIdsplit[(4)]),
+    ResourceType = tostring(ResourceIdsplit[(6)]),
+    ResourceName = tostring(ResourceIdsplit[(8)]),
+    FirstEvaluationDate = MoreInfo.status.firstEvaluationDate,
+    StatusChangeDate = MoreInfo.status.statusChangeDate,
+    Status = MoreInfo.status.code
+| join kind=leftouter (resourcecontainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
+| where AssessmentType == 'BuiltIn'
+| project-away kind,managedBy,sku,plan,tags,identity,zones,location,ResourceIdsplit,id,name,type,resourceGroup,subscriptionId, extendedLocation,subscriptionId1
+| project SubName, ResourceSubId, ResourceRgName,ResourceType,ResourceName,TenantId=tenantId, RecommendationName, RecommendationId, RecommendationState, RecommendationSeverity, AssessmentType, PolicyDefinitionId, ImplementationEffort, UserImpact, Category, Threats, Source, ActionDescription, RemediationDescription, MoreInfo, ResourceId, AzPortalLink, AssessmentKey
+| where RecommendationState == 'Unhealthy'
